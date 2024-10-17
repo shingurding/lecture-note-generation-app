@@ -34,9 +34,6 @@ if "lecture_note" not in st.session_state:
 
 col1, col2 = st.columns(2)
 
-completed = False  # Default value
-downloaded = True
-
 with col1:
     st.header("Audio :loud_sound:")
     audio_file = st.file_uploader("Upload audio file", type=["mp3", "m4a", "mpeg"])
@@ -155,7 +152,6 @@ with col2:
                     lecture_note_md = get_lecture_note_md(lecture_note_string, box)
 
                 st.session_state.lecture_note = lecture_note_md
-                completed = True
 
                 # Clear st.session_state.transcription
                 st.session_state.transcription = None
@@ -197,7 +193,6 @@ with col2:
                 lecture_note_md = get_lecture_note_md(lecture_note_string, box)
 
             st.session_state.lecture_note = lecture_note_md
-            completed = True
 
             # Clear st.session_state.transcription
             st.session_state.transcription = None
@@ -208,4 +203,3 @@ with col2:
         file_name="lecture_note.txt"
     ):
         st.markdown(st.session_state.lecture_note)
-        completed = False
